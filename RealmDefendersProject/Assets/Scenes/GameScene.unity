@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b745e4701461594abdd4fe1e935ac10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pf_WoodHarvester: {fileID: 3284150827291431656, guid: f60f81992d9b2ca4d88365a67f4b1f53, type: 3}
+  buildingType: {fileID: 11400000, guid: 60bb25fcdc3d3c34f8194de55039ea0b, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
