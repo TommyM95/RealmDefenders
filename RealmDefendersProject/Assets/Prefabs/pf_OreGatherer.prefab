@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2e47d6fee8f357440965d6b810eeeed3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb2aa32b2ed7dad40bb7b21294e29a07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -91,10 +91,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3284150827291431656}
-  - component: {fileID: -8084561435430576972}
-  - component: {fileID: -3124261978274547543}
+  - component: {fileID: -3685585174129019921}
+  - component: {fileID: 1840668305977792746}
   m_Layer: 0
-  m_Name: pf_WoodGatherer
+  m_Name: pf_OreGatherer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8084561435430576972
+--- !u!114 &-3685585174129019921
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e932a5f1acdee47a2f1fe09386e692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3124261978274547543
+--- !u!114 &1840668305977792746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,4 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139efb2c17f1d4141a8f51fff741a4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: {fileID: 11400000, guid: 60bb25fcdc3d3c34f8194de55039ea0b, type: 2}
+  buildingType: {fileID: 11400000, guid: 3179cad8a63c2114ea3d462773ff519c, type: 2}
