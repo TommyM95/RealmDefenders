@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: Ore Gatherer
   prefab: {fileID: 3284150827291431656, guid: dd54124816709864c910d0a185d1c61b, type: 3}
+  resourceGeneratorData:
+    timerMax: 2
+    resourceType: {fileID: 11400000, guid: 0a13ad89e6721874cb91004a53f1fed8, type: 2}

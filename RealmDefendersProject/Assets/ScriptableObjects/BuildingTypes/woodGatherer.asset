@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: Wood Gatherer
   prefab: {fileID: 3284150827291431656, guid: f60f81992d9b2ca4d88365a67f4b1f53, type: 3}
+  resourceGeneratorData:
+    timerMax: 1
+    resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
