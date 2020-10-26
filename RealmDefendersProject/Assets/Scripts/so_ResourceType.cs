@@ -6,5 +6,5 @@ using UnityEngine;
 public class so_ResourceType : ScriptableObject
 {
     public string nameString;
-
+    public Sprite uiSprite;
 }

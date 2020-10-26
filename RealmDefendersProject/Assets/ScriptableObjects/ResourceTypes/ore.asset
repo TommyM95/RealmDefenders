@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ore
   m_EditorClassIdentifier: 
   nameString: ore
+  uiSprite: {fileID: 21300000, guid: a654148c4ddf9a64c9d41b3c1ce1100f, type: 3}
