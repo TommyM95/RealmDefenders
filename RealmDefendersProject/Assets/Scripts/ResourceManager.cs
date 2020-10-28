@@ -25,7 +25,7 @@ public class ResourceManager : MonoBehaviour
             resourceAmountDictionary[resourceType] = 0;
         }
 
-        TestLogResouceAmountDictionary();
+        //TestLogResouceAmountDictionary();
     }
 
     private void Update()
@@ -52,7 +52,7 @@ public class ResourceManager : MonoBehaviour
 
         OnResourceAmountChange?.Invoke(this, EventArgs.Empty); //   Check if something is listening for event if yes trigger event if no saves null ref exception
 
-        TestLogResouceAmountDictionary();
+        //TestLogResouceAmountDictionary();
     }
 
     public int GetResourceAmount(so_ResourceType resourceType)

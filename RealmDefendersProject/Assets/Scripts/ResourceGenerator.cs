@@ -20,7 +20,7 @@ public class ResourceGenerator : MonoBehaviour
         if (timer <= 0f)
         {
             timer += timerMax;
-            Debug.Log("Adding : " + buildingType.resourceGeneratorData.resourceType.nameString);
+            //Debug.Log("Adding : " + buildingType.resourceGeneratorData.resourceType.nameString);
             ResourceManager.Instance.AddResource(buildingType.resourceGeneratorData.resourceType, 1);
         }
     }
