@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 042eaa9f145bc8b4db99156f593bd85e, type: 3}
-  m_Name: oreGatherer
+  m_Name: gemGatherer
   m_EditorClassIdentifier: 
-  nameString: Ore Gatherer
-  prefab: {fileID: 3284150827291431656, guid: dd54124816709864c910d0a185d1c61b, type: 3}
+  nameString: Gem Gatherer
+  prefab: {fileID: 3284150827291431656, guid: 6ac321e4281bc20499960df79e71ca52, type: 3}
   resourceGeneratorData:
-    timerMax: 1
-    resourceType: {fileID: 11400000, guid: 0a13ad89e6721874cb91004a53f1fed8, type: 2}
-  sprite: {fileID: 21300000, guid: 136d9f7c0d4e8c748b57de60aa1a5b40, type: 3}
+    timerMax: 2
+    resourceType: {fileID: 11400000, guid: 3d68ce8b3a3aa5247b0aab52ca45f477, type: 2}
+  sprite: {fileID: 21300000, guid: 92c3545b98940e0428769708ed00dc3d, type: 3}

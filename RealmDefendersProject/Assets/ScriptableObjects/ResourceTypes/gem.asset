@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: gem
   m_EditorClassIdentifier: 
   nameString: gem
+  uiSprite: {fileID: 21300000, guid: 2d92ebff4f0c8d14896d42d2cc49566a, type: 3}
