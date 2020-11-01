@@ -1,11 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour
 {
-    public static BuildingManager Insance { get; private set; }
+    public static BuildingManager Instance { get; private set; }
+
+    public event EventHandler<OnActiveBuildingTypeChangeEventArgs> OnActiveBuildingTypeChange;
+    /* To Send a args object through event system to gain access to the properties 
+    in this case I want the sprite of the active building for previewing building*/
+    public class OnActiveBuildingTypeChangeEventArgs : EventArgs
+    {
+        public so_BuildingType activeBuildingType;
+    }
+
     private so_BuildingType activeBuildingType;
     private so_BuildingTypeList buildingTypeList;
 
@@ -13,7 +23,7 @@ public class BuildingManager : MonoBehaviour
 
     private void Awake()
     {
-        Insance = this;
+        Instance = this;
         buildingTypeList = Resources.Load<so_BuildingTypeList>(typeof(so_BuildingTypeList).Name);
     }
 
@@ -28,33 +38,20 @@ public class BuildingManager : MonoBehaviour
         {
             if (activeBuildingType != null)
             {
-                Instantiate(activeBuildingType.prefab, GetMouseWorldPosition(), Quaternion.identity);
+                Instantiate(activeBuildingType.prefab, UtilitieClass.GetMouseWorldPosition(), Quaternion.identity);
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            activeBuildingType = buildingTypeList.list[0];
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            activeBuildingType = buildingTypeList.list[1];
         }
 
         //Debug.Log(GetMouseWorldPosition()); // Used for Testing the GetMouseWorldPosition Function
     }
 
-    private Vector3 GetMouseWorldPosition() // This Function Returns the World Position of the Mouse
-    {
-        // Get Screen Position of the Mouse and Convert it to World Position, Set Z axis to 0
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPosition.z = 0f;
-        return mouseWorldPosition;
-    }
-
     public void SetActiveBuildingType(so_BuildingType buildingType) //
     {
         activeBuildingType = buildingType;
+
+        OnActiveBuildingTypeChange?.Invoke(this, new OnActiveBuildingTypeChangeEventArgs { 
+            activeBuildingType = activeBuildingType
+        });
     }
 
     public so_BuildingType GetActiveBuildingType()

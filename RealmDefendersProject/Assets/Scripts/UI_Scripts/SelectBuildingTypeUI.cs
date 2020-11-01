@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,7 @@ public class SelectBuildingTypeUI : MonoBehaviour
         arrowButton.Find("Image").GetComponent<RectTransform>().sizeDelta = new Vector2(0, -30);
 
         arrowButton.GetComponent<Button>().onClick.AddListener(() => {
-            BuildingManager.Insance.SetActiveBuildingType(null);
+            BuildingManager.Instance.SetActiveBuildingType(null);
         });
 
         index++;
@@ -48,7 +49,7 @@ public class SelectBuildingTypeUI : MonoBehaviour
             buttonTransform.Find("Image").GetComponent<Image>().sprite = buildingType.sprite;
 
             buttonTransform.GetComponent<Button>().onClick.AddListener(() => {
-                BuildingManager.Insance.SetActiveBuildingType(buildingType);
+                BuildingManager.Instance.SetActiveBuildingType(buildingType);
             });
 
             buttonTransformDictionary[buildingType] = buttonTransform;
@@ -57,7 +58,13 @@ public class SelectBuildingTypeUI : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
+    {
+        BuildingManager.Instance.OnActiveBuildingTypeChange += BuildingManager_OnActiveBuildingTypeChange;
+        UpdateActiveBuildingType();
+    }
+
+    private void BuildingManager_OnActiveBuildingTypeChange(object sender, BuildingManager.OnActiveBuildingTypeChangeEventArgs e)
     {
         UpdateActiveBuildingType();
     }
@@ -71,7 +78,7 @@ public class SelectBuildingTypeUI : MonoBehaviour
             buttonTransform.Find("selected").gameObject.SetActive(false);
         }
 
-        so_BuildingType activeBuildingType = BuildingManager.Insance.GetActiveBuildingType();
+        so_BuildingType activeBuildingType = BuildingManager.Instance.GetActiveBuildingType();
         if (activeBuildingType == null)
         {
             arrowButton.Find("selected").gameObject.SetActive(true);
