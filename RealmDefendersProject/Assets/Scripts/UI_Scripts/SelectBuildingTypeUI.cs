@@ -29,7 +29,7 @@ public class SelectBuildingTypeUI : MonoBehaviour
         arrowButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(offset * index, 0);
 
         arrowButton.Find("Image").GetComponent<Image>().sprite = mouseSprite;
-        arrowButton.Find("Image").GetComponent<RectTransform>().sizeDelta = new Vector2(0, -30);
+        arrowButton.Find("Image").GetComponent<RectTransform>().sizeDelta = new Vector2(0, -50);    // Change Size of cursor sprite representation
 
         arrowButton.GetComponent<Button>().onClick.AddListener(() => {
             BuildingManager.Instance.SetActiveBuildingType(null);
