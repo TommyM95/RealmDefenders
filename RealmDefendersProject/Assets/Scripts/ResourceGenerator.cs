@@ -6,12 +6,46 @@ public class ResourceGenerator : MonoBehaviour
 {
     private float timer;
     private float timerMax;
-    private so_BuildingType buildingType;
+    private ResourceGeneratorData resourceGeneratorData;
 
     private void Awake()
     {
-        buildingType = GetComponent<BuildingTypeContainer>().buildingType;
-        timerMax = buildingType.resourceGeneratorData.timerMax;
+        resourceGeneratorData = GetComponent<BuildingTypeContainer>().buildingType.resourceGeneratorData;
+        timerMax = resourceGeneratorData.timerMax;
+    }
+
+    private void Start()
+    {
+        Collider2D[] collider2DArry = Physics2D.OverlapCircleAll(transform.position, resourceGeneratorData.resourceDetectionRadius);
+
+        int nearResourceAmount = 0;
+        foreach (Collider2D collider2D in collider2DArry)
+        {
+            ResourceNode resourceNode = collider2D.GetComponent<ResourceNode>();
+            if (resourceNode != null)
+            {
+                if (resourceNode.resourceType == resourceGeneratorData.resourceType)
+                {
+                    nearResourceAmount++;
+                }
+                
+            }
+        }
+
+        nearResourceAmount = Mathf.Clamp(nearResourceAmount, 0, resourceGeneratorData.maxResouceAmount);
+
+        if (nearResourceAmount == 0)
+        {
+            //The there are no resource nodes nearby
+            enabled = false; // So we disable the resource generator
+        }
+        else
+        {
+            timerMax = (resourceGeneratorData.timerMax / 2f) + resourceGeneratorData.timerMax * 
+                (1 - (float)nearResourceAmount / resourceGeneratorData.maxResouceAmount);
+        }
+        Debug.Log("nearResourceAmount: " + nearResourceAmount + " timerMax: " + timerMax);
+
     }
 
     private void Update()
@@ -21,7 +55,7 @@ public class ResourceGenerator : MonoBehaviour
         {
             timer += timerMax;
             //Debug.Log("Adding : " + buildingType.resourceGeneratorData.resourceType.nameString);
-            ResourceManager.Instance.AddResource(buildingType.resourceGeneratorData.resourceType, 1);
+            ResourceManager.Instance.AddResource(resourceGeneratorData.resourceType, 1);
         }
     }
 }

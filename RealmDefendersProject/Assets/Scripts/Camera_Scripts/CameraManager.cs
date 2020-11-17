@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] float zoomAmount = 2f;
     [SerializeField] float zoomSpeed = 2f;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera = null;
-    [SerializeField] float minOrthgraphicSize = 10f;
+    [SerializeField] float minOrthgraphicSize = 5f;
     [SerializeField] float maxOrthgraphicSize = 30f;
 
     private float orthgraphicSize;
