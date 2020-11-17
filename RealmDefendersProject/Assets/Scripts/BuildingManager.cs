@@ -1,18 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour
 {
-    private so_BuildingType buildingType;
+    public static BuildingManager Instance { get; private set; }
+
+    public event EventHandler<OnActiveBuildingTypeChangeEventArgs> OnActiveBuildingTypeChange;
+    /* To Send a args object through event system to gain access to the properties 
+    in this case I want the sprite of the active building for previewing building*/
+    public class OnActiveBuildingTypeChangeEventArgs : EventArgs
+    {
+        public so_BuildingType activeBuildingType;
+    }
+
+    private so_BuildingType activeBuildingType;
     private so_BuildingTypeList buildingTypeList;
 
     private Camera mainCamera;  // Main Camera of GameScene
 
     private void Awake()
     {
+        Instance = this;
         buildingTypeList = Resources.Load<so_BuildingTypeList>(typeof(so_BuildingTypeList).Name);
-        buildingType = buildingTypeList.list[0];
     }
 
     private void Start()
@@ -20,31 +32,30 @@ public class BuildingManager : MonoBehaviour
         mainCamera = Camera.main;   // Caching Camera of the scene to save searching for the object multiple times saving preformance
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            Instantiate(buildingType.prefab, GetMouseWorldPosition(), Quaternion.identity);
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            buildingType = buildingTypeList.list[0];
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            buildingType = buildingTypeList.list[1];
+            if (activeBuildingType != null)
+            {
+                Instantiate(activeBuildingType.prefab, UtilitieClass.GetMouseWorldPosition(), Quaternion.identity);
+            }
         }
 
         //Debug.Log(GetMouseWorldPosition()); // Used for Testing the GetMouseWorldPosition Function
     }
 
-    private Vector3 GetMouseWorldPosition() // This Function Returns the World Position of the Mouse
+    public void SetActiveBuildingType(so_BuildingType buildingType) //
     {
-        // Get Screen Position of the Mouse and Convert it to World Position, Set Z axis to 0
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPosition.z = 0f;
-        return mouseWorldPosition;
+        activeBuildingType = buildingType;
+
+        OnActiveBuildingTypeChange?.Invoke(this, new OnActiveBuildingTypeChangeEventArgs { 
+            activeBuildingType = activeBuildingType
+        });
+    }
+
+    public so_BuildingType GetActiveBuildingType()
+    {
+        return activeBuildingType;
     }
 }

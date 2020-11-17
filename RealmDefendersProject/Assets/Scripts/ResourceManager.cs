@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager Instance { get; private set; }    // using a singleton patter, need access to this so public get private set
+
+    public event EventHandler OnResourceAmountChange;
 
     private Dictionary<so_ResourceType, int> resourceAmountDictionary;  // Using the dictionary data structure to store the amount of resources player has
 
@@ -22,7 +25,7 @@ public class ResourceManager : MonoBehaviour
             resourceAmountDictionary[resourceType] = 0;
         }
 
-        TestLogResouceAmountDictionary();
+        //TestLogResouceAmountDictionary();
     }
 
     private void Update()
@@ -46,6 +49,14 @@ public class ResourceManager : MonoBehaviour
     public void AddResource(so_ResourceType resourceType, int amount)
     {
         resourceAmountDictionary[resourceType] += amount;   // Add the amount var to the defined resource type in the dictionary
-        TestLogResouceAmountDictionary();
+
+        OnResourceAmountChange?.Invoke(this, EventArgs.Empty); //   Check if something is listening for event if yes trigger event if no saves null ref exception
+
+        //TestLogResouceAmountDictionary();
+    }
+
+    public int GetResourceAmount(so_ResourceType resourceType)
+    {
+        return resourceAmountDictionary[resourceType];
     }
 }
