@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 042eaa9f145bc8b4db99156f593bd85e, type: 3}
-  m_Name: oreGatherer
+  m_Name: PlayerCamp
   m_EditorClassIdentifier: 
-  nameString: Ore Gatherer
-  prefab: {fileID: 3284150827291431656, guid: dd54124816709864c910d0a185d1c61b, type: 3}
+  nameString: Player Camp
+  prefab: {fileID: 0}
   resourceGeneratorData:
-    timerMax: 1
-    resourceType: {fileID: 11400000, guid: 0a13ad89e6721874cb91004a53f1fed8, type: 2}
-    resourceDetectionRadius: 5
-    maxResouceAmount: 6
-  sprite: {fileID: 21300000, guid: 136d9f7c0d4e8c748b57de60aa1a5b40, type: 3}
+    timerMax: 0.5
+    resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
+    resourceDetectionRadius: 5555555
+    maxResouceAmount: 10
+  sprite: {fileID: 0}
+  minDistanceBetweenBuildingRadius: 1

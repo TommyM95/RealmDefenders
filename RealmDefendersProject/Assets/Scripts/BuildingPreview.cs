@@ -37,7 +37,8 @@ public class BuildingPreview : MonoBehaviour
     private void Show(Sprite previewSprite)
     {
         spriteGameObject.GetComponent<SpriteRenderer>().sprite = previewSprite;
-        spriteGameObject.SetActive(true); 
+        spriteGameObject.SetActive(true);
+        //spriteGameObject.GetComponent<SpriteRenderer>().color = new Color(255,0,0);
     }
 
     private void Hide()

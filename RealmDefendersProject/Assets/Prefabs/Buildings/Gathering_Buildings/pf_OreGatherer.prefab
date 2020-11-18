@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 3284150827291431656}
   - component: {fileID: -3685585174129019921}
   - component: {fileID: 1840668305977792746}
+  - component: {fileID: 6387740571069424625}
   m_Layer: 8
   m_Name: pf_OreGatherer
   m_TagString: Untagged
@@ -295,6 +296,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: {fileID: 11400000, guid: 3179cad8a63c2114ea3d462773ff519c, type: 2}
+--- !u!61 &6387740571069424625
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284150827291431659}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.18026853, y: -0.24141788}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5313287, y: 2.5809355}
+  m_EdgeRadius: 0
 --- !u!1 &8861881498488777834
 GameObject:
   m_ObjectHideFlags: 0

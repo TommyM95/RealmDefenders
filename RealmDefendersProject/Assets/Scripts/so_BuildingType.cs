@@ -9,4 +9,5 @@ public class so_BuildingType : ScriptableObject
     public Transform prefab;                                // Prefab of the complete building
     public ResourceGeneratorData resourceGeneratorData;     // ResourceGeneratorData Custom class to define how much resources is generated persecond
     public Sprite sprite;                                   // Building UI Sprite
+    public float minDistanceBetweenBuildingRadius;          // Used to determine the minimum distance between buildings that can be placed
 }

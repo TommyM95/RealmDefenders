@@ -20,3 +20,4 @@ MonoBehaviour:
     resourceDetectionRadius: 6
     maxResouceAmount: 4
   sprite: {fileID: 21300000, guid: 92c3545b98940e0428769708ed00dc3d, type: 3}
+  minDistanceBetweenBuildingRadius: 1
