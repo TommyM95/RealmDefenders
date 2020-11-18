@@ -4,6 +4,28 @@ using UnityEngine;
 
 public class ResourceGenerator : MonoBehaviour
 {
+    public static int GetNearbyResourceAmount(ResourceGeneratorData resourceGeneratorData, Vector3 position)
+    {
+        Collider2D[] collider2DArry = Physics2D.OverlapCircleAll(position, resourceGeneratorData.resourceDetectionRadius);
+
+        int nearResourceAmount = 0;
+        foreach (Collider2D collider2D in collider2DArry)
+        {
+            ResourceNode resourceNode = collider2D.GetComponent<ResourceNode>();
+            if (resourceNode != null)
+            {
+                if (resourceNode.resourceType == resourceGeneratorData.resourceType)
+                {
+                    nearResourceAmount++;
+                }
+
+            }
+        }
+
+        nearResourceAmount = Mathf.Clamp(nearResourceAmount, 0, resourceGeneratorData.maxResouceAmount);
+
+        return nearResourceAmount;
+    }
     private float timer;
     private float timerMax;
     private ResourceGeneratorData resourceGeneratorData;
@@ -16,23 +38,7 @@ public class ResourceGenerator : MonoBehaviour
 
     private void Start()
     {
-        Collider2D[] collider2DArry = Physics2D.OverlapCircleAll(transform.position, resourceGeneratorData.resourceDetectionRadius);
-
-        int nearResourceAmount = 0;
-        foreach (Collider2D collider2D in collider2DArry)
-        {
-            ResourceNode resourceNode = collider2D.GetComponent<ResourceNode>();
-            if (resourceNode != null)
-            {
-                if (resourceNode.resourceType == resourceGeneratorData.resourceType)
-                {
-                    nearResourceAmount++;
-                }
-                
-            }
-        }
-
-        nearResourceAmount = Mathf.Clamp(nearResourceAmount, 0, resourceGeneratorData.maxResouceAmount);
+        int nearResourceAmount = GetNearbyResourceAmount(resourceGeneratorData, transform.position);
 
         if (nearResourceAmount == 0)
         {
@@ -57,5 +63,20 @@ public class ResourceGenerator : MonoBehaviour
             //Debug.Log("Adding : " + buildingType.resourceGeneratorData.resourceType.nameString);
             ResourceManager.Instance.AddResource(resourceGeneratorData.resourceType, 1);
         }
+    }
+
+    public ResourceGeneratorData GetResourceGeneratorData()
+    {
+        return resourceGeneratorData;
+    }
+
+    public float GetNormalizedTimer()
+    {
+        return timer / timerMax;
+    }
+
+    public float GetResourcesGeneratedPerSeccond()
+    {
+        return 1 / timerMax;
     }
 }
