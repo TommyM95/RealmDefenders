@@ -11,4 +11,16 @@ public class so_BuildingType : ScriptableObject
     public Sprite sprite;                                   // Building UI Sprite
     public float minDistanceBetweenBuildingRadius;          // Used to determine the minimum distance between buildings that can be placed
     public ResourceAmount[] buildResourceCostArray;          // Arry because we might have more than one resource needed to build a building
+
+
+    public string GetCostOfBuildingAsString()
+    {
+        string str = "";
+        foreach (ResourceAmount resourceAmount in buildResourceCostArray)
+        {
+            
+               str += resourceAmount.resourceType.nameString + ": " + resourceAmount.amount + " ";
+        }
+        return str;
+    }
 }
