@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SelectBuildingTypeUI : MonoBehaviour
 {
     [SerializeField] private Sprite mouseSprite;
+    [SerializeField] private List<so_BuildingType> ignoreBuildingTypeList;
 
     private Dictionary<so_BuildingType, Transform> buttonTransformDictionary;
     private Transform arrowButton;
@@ -35,11 +36,20 @@ public class SelectBuildingTypeUI : MonoBehaviour
             BuildingManager.Instance.SetActiveBuildingType(null);
         });
 
+        MouseEnterExitEvent mouseEnterExitEvent = arrowButton.GetComponent<MouseEnterExitEvent>();
+        mouseEnterExitEvent.OnMouseEnter += (object sender, EventArgs e) => {
+            ToolTipUI.Instance.Show("Cursor");
+        };
+        mouseEnterExitEvent.OnMouseExit += (object sender, EventArgs e) => {
+            ToolTipUI.Instance.Hide();
+        };
+
         index++;
 
-        
+
         foreach (so_BuildingType buildingType in buildingTypeList.list)
         {
+            if (ignoreBuildingTypeList.Contains(buildingType)) continue;
             Transform buttonTransform = Instantiate(buttonTemplate, transform);
             buttonTransform.gameObject.SetActive(true);
 
@@ -51,6 +61,15 @@ public class SelectBuildingTypeUI : MonoBehaviour
             buttonTransform.GetComponent<Button>().onClick.AddListener(() => {
                 BuildingManager.Instance.SetActiveBuildingType(buildingType);
             });
+
+            mouseEnterExitEvent = buttonTransform.GetComponent<MouseEnterExitEvent>();
+            mouseEnterExitEvent.OnMouseEnter += (object sender, EventArgs e) =>{
+                ToolTipUI.Instance.Show(buildingType.nameString + "\n" + 
+                    "Cost's " + buildingType.GetCostOfBuildingAsString()+"");
+            };
+            mouseEnterExitEvent.OnMouseExit += (object sender, EventArgs e) => {
+                ToolTipUI.Instance.Hide();
+            };
 
             buttonTransformDictionary[buildingType] = buttonTransform;
 

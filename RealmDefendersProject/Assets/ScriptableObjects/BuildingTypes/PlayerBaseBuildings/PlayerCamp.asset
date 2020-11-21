@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 042eaa9f145bc8b4db99156f593bd85e, type: 3}
-  m_Name: woodGatherer
+  m_Name: PlayerCamp
   m_EditorClassIdentifier: 
-  nameString: Wood Gatherer
-  prefab: {fileID: 3284150827291431656, guid: f60f81992d9b2ca4d88365a67f4b1f53, type: 3}
+  nameString: Player Camp
+  prefab: {fileID: 0}
   resourceGeneratorData:
-    timerMax: 0.8
+    timerMax: 0.5
     resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
-    resourceDetectionRadius: 5
-    maxResouceAmount: 7
-  sprite: {fileID: 21300000, guid: b1b1134d8abc30647b247541d52fce66, type: 3}
+    resourceDetectionRadius: 5555555
+    maxResouceAmount: 10
+  sprite: {fileID: 0}
+  minDistanceBetweenBuildingRadius: 1

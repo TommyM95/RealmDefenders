@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ede9380e43a6649b2c253a2e43c7cc, type: 3}
   m_Name: ore
   m_EditorClassIdentifier: 
-  nameString: ore
+  nameString: Ore
   uiSprite: {fileID: 21300000, guid: a654148c4ddf9a64c9d41b3c1ce1100f, type: 3}

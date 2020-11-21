@@ -6,9 +6,11 @@ using UnityEngine;
 public class BuildingPreview : MonoBehaviour
 {
     private GameObject spriteGameObject;
+    private ResourcePlacementOverlay resourcePlacementOverlay;
     private void Awake()
     {
         spriteGameObject = transform.Find("sprite").gameObject;
+        resourcePlacementOverlay = transform.Find("pf_ResourcePlacementEfficiencyOverlay").GetComponent<ResourcePlacementOverlay>();
         Hide();
     }
 
@@ -22,10 +24,12 @@ public class BuildingPreview : MonoBehaviour
         if (e.activeBuildingType == null)
         {
             Hide();
+            resourcePlacementOverlay.Hide();
         }
         else
         {
             Show(e.activeBuildingType.sprite);
+            resourcePlacementOverlay.Show(e.activeBuildingType.resourceGeneratorData);
         }
     }
 
@@ -37,7 +41,8 @@ public class BuildingPreview : MonoBehaviour
     private void Show(Sprite previewSprite)
     {
         spriteGameObject.GetComponent<SpriteRenderer>().sprite = previewSprite;
-        spriteGameObject.SetActive(true); 
+        spriteGameObject.SetActive(true);
+        //spriteGameObject.GetComponent<SpriteRenderer>().color = new Color(255,0,0);
     }
 
     private void Hide()

@@ -18,7 +18,7 @@ public class BuildingManager : MonoBehaviour
 
     private so_BuildingType activeBuildingType;
     private so_BuildingTypeList buildingTypeList;
-
+    [SerializeField] float maxDistanceBetweenBuildingRadius;
     private Camera mainCamera;  // Main Camera of GameScene
 
     private void Awake()
@@ -36,12 +36,26 @@ public class BuildingManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (activeBuildingType != null)
-            {
-                Instantiate(activeBuildingType.prefab, UtilitieClass.GetMouseWorldPosition(), Quaternion.identity);
+            if (activeBuildingType != null) {
+                if (CanBuildingSpawn(activeBuildingType, UtilitieClass.GetMouseWorldPosition(), out string errorMessage))
+                {
+                    if (ResourceManager.Instance.CanAfford(activeBuildingType.buildResourceCostArray))
+                    {
+                        ResourceManager.Instance.SpendResource(activeBuildingType.buildResourceCostArray);
+                        Instantiate(activeBuildingType.prefab, UtilitieClass.GetMouseWorldPosition(), Quaternion.identity);
+                    }
+                    else
+                    {
+                        ToolTipUI.Instance.Show("Not enough resources ", new ToolTipUI.ToolTipTimer { timer = 2f });
+                    }
+                }
+                else
+                {
+                    ToolTipUI.Instance.Show(errorMessage, new ToolTipUI.ToolTipTimer { timer = 2f });
+                }
             }
         }
-
+        
         //Debug.Log(GetMouseWorldPosition()); // Used for Testing the GetMouseWorldPosition Function
     }
 
@@ -57,5 +71,48 @@ public class BuildingManager : MonoBehaviour
     public so_BuildingType GetActiveBuildingType()
     {
         return activeBuildingType;
+    }
+
+    private bool CanBuildingSpawn(so_BuildingType buildingType, Vector3 position, out string errorMessage)
+    {
+        BoxCollider2D boxCollider2D = buildingType.prefab.GetComponent<BoxCollider2D>();
+
+        Collider2D[] collider2DArray = Physics2D.OverlapBoxAll(position + (Vector3)boxCollider2D.offset, boxCollider2D.size, 0);
+
+        bool isPlacementAreaClear = collider2DArray.Length == 0;
+        if (!isPlacementAreaClear)
+        {
+            errorMessage = "Area is not clear";
+            return false;
+        }
+
+        collider2DArray = Physics2D.OverlapCircleAll(position, buildingType.minDistanceBetweenBuildingRadius);
+        foreach (Collider2D collider2D in collider2DArray)
+        {
+            BuildingTypeContainer buildingTypeContainer = collider2D.GetComponent<BuildingTypeContainer>();
+            if (buildingTypeContainer.buildingType == buildingType)
+            {
+                errorMessage = "Too close to another building of the same type";
+                // Already building of type within placement radius
+                return false;
+            }
+        }
+
+         // Set max distance building is placeable on map based on how far away it is from "other building"
+         collider2DArray = Physics2D.OverlapCircleAll(position, maxDistanceBetweenBuildingRadius);
+         foreach (Collider2D collider2D in collider2DArray)
+         {
+             BuildingTypeContainer buildingTypeContainer = collider2D.GetComponent<BuildingTypeContainer>();
+             if (buildingTypeContainer != null)
+             {
+                errorMessage = null;
+                 return true;
+             }
+         }
+
+        errorMessage = "Too far from other buildings!";
+         return false;
+        
+        //return true; //temp
     }
 }

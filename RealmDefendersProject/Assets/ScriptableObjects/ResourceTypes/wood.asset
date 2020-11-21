@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ede9380e43a6649b2c253a2e43c7cc, type: 3}
   m_Name: wood
   m_EditorClassIdentifier: 
-  nameString: wood
+  nameString: Wood
   uiSprite: {fileID: 21300000, guid: 4cce6dfabe85ba94cb5b78e773dad9aa, type: 3}
