@@ -9,6 +9,8 @@ public class ResourceManager : MonoBehaviour
 
     public event EventHandler OnResourceAmountChange;
 
+    [SerializeField] private List<ResourceAmount> startingResourceAmountList;
+
     private Dictionary<so_ResourceType, int> resourceAmountDictionary;  // Using the dictionary data structure to store the amount of resources player has
 
     private void Awake()
@@ -23,6 +25,11 @@ public class ResourceManager : MonoBehaviour
         foreach (so_ResourceType resourceType in resourceTypeList.list)
         {
             resourceAmountDictionary[resourceType] = 0;
+        }
+
+        foreach (ResourceAmount resourceAmount in startingResourceAmountList)
+        {
+            AddResource(resourceAmount.resourceType, resourceAmount.amount);
         }
 
         //TestLogResouceAmountDictionary();

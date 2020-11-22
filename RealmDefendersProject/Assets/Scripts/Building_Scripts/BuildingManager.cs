@@ -16,6 +16,7 @@ public class BuildingManager : MonoBehaviour
         public so_BuildingType activeBuildingType;
     }
 
+    [SerializeField] private Building playerCampBuilding;
     private so_BuildingType activeBuildingType;
     private so_BuildingTypeList buildingTypeList;
     [SerializeField] float maxDistanceBetweenBuildingRadius;
@@ -55,8 +56,13 @@ public class BuildingManager : MonoBehaviour
                 }
             }
         }
-        
+
         //Debug.Log(GetMouseWorldPosition()); // Used for Testing the GetMouseWorldPosition Function
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Vector3 enemySpawnPos = UtilitieClass.GetMouseWorldPosition() + UtilitieClass.GetRandomDirection() * 5f;
+            Enemy.Create(enemySpawnPos);
+        }
     }
 
     public void SetActiveBuildingType(so_BuildingType buildingType) //
@@ -90,6 +96,7 @@ public class BuildingManager : MonoBehaviour
         foreach (Collider2D collider2D in collider2DArray)
         {
             BuildingTypeContainer buildingTypeContainer = collider2D.GetComponent<BuildingTypeContainer>();
+            Debug.Log(buildingTypeContainer.buildingType);
             if (buildingTypeContainer.buildingType == buildingType)
             {
                 errorMessage = "Too close to another building of the same type";
@@ -114,5 +121,10 @@ public class BuildingManager : MonoBehaviour
          return false;
         
         //return true; //temp
+    }
+
+    public Building GetPlayerCampBuilding()
+    {
+        return playerCampBuilding;
     }
 }

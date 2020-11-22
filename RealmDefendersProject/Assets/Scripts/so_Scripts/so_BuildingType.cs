@@ -12,6 +12,8 @@ public class so_BuildingType : ScriptableObject
     public float minDistanceBetweenBuildingRadius;          // Used to determine the minimum distance between buildings that can be placed
     public ResourceAmount[] buildResourceCostArray;         // Arry because we might have more than one resource needed to build a building
     public float maxHealth;                                 // Maximum Health of building
+    public bool hasResourceGeneratorData;                   // So We can see if a building has resource a resource generator and avoid error when it does not
+
 
     public string GetCostOfBuildingAsString()
     {

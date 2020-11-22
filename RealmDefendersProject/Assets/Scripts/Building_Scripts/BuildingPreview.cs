@@ -29,7 +29,15 @@ public class BuildingPreview : MonoBehaviour
         else
         {
             Show(e.activeBuildingType.sprite);
-            resourcePlacementOverlay.Show(e.activeBuildingType.resourceGeneratorData);
+            if (e.activeBuildingType.hasResourceGeneratorData)
+            {
+                resourcePlacementOverlay.Show(e.activeBuildingType.resourceGeneratorData);
+            }
+            else
+            {
+                resourcePlacementOverlay.Hide();
+            }
+            //resourcePlacementOverlay.Show(e.activeBuildingType.resourceGeneratorData);
         }
     }
 

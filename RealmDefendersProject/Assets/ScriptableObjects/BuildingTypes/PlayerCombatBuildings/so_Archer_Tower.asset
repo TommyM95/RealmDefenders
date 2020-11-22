@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042eaa9f145bc8b4db99156f593bd85e, type: 3}
+  m_Name: so_Archer_Tower
+  m_EditorClassIdentifier: 
+  nameString: Archer Tower
+  prefab: {fileID: 7798222583952135960, guid: d08ee13bdc738ff4e884718217e18b06, type: 3}
+  resourceGeneratorData:
+    timerMax: 0
+    resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
+    resourceDetectionRadius: 999
+    maxResouceAmount: 0
+  sprite: {fileID: 21300000, guid: 28a7de85e71691a46ad8e561c27f257b, type: 3}
+  minDistanceBetweenBuildingRadius: 1
+  buildResourceCostArray:
+  - resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
+    amount: 50
+  - resourceType: {fileID: 11400000, guid: 0a13ad89e6721874cb91004a53f1fed8, type: 2}
+    amount: 50
+  maxHealth: 150
+  hasResourceGeneratorData: 0
