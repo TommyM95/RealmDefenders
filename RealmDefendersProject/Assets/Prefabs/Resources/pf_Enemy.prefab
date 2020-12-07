@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c94a02e54858da64685cc300cbcbed06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 2192146625206190417}
   moveSpeed: 4
   damage: 10
 --- !u!114 &5321576920446079192
@@ -111,6 +112,7 @@ GameObject:
   - component: {fileID: 1223121164165243525}
   - component: {fileID: 2192146625206190417}
   - component: {fileID: 5311576808518880986}
+  - component: {fileID: 5765111977630371651}
   m_Layer: 11
   m_Name: sprite
   m_TagString: Untagged
@@ -126,8 +128,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4654095770520688518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.19, y: -0.072, z: 0}
+  m_LocalScale: {x: 0.5580729, y: 0.5580729, z: 0.5580729}
   m_Children: []
   m_Father: {fileID: 512804695609940242}
   m_RootOrder: 0
@@ -172,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d2fa16b4e8e25ab448ddb02430ef315c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61bc940fd5f751a4aad86a1028e2493e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -196,6 +198,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runOnce: 1
+--- !u!114 &5765111977630371651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654095770520688518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ca46f8cc16d0241a1db87a987d14b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 6325965592021182631, guid: eec14bfdfa8fd6041a4ee1363c063de2, type: 3}
 --- !u!1001 &1540746457322177687
 PrefabInstance:
   m_ObjectHideFlags: 0

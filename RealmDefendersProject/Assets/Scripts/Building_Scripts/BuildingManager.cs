@@ -26,11 +26,23 @@ public class BuildingManager : MonoBehaviour
     {
         Instance = this;
         buildingTypeList = Resources.Load<so_BuildingTypeList>(typeof(so_BuildingTypeList).Name);
+        
     }
 
     private void Start()
     {
         mainCamera = Camera.main;   // Caching Camera of the scene to save searching for the object multiple times saving preformance
+        playerCampBuilding.GetComponent<HealthSystem>().OnDied += PlayerCamp_OnDied;
+    }
+
+    private void PlayerCamp_OnDied(object sender, EventArgs e)
+    {
+        GameObject allEnemy = GameObject.Find("pf_Enemy(Clone)");
+        //allEnemy.SetActive(false);
+        allEnemy.GetComponent<HealthSystem>().Damage(99999);
+        GameOverUI.Instance.Show();
+        
+
     }
 
     private void Update()

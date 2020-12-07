@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 184452091790643573}
   - component: {fileID: 8614739361026884488}
   - component: {fileID: 7425680744534687136}
-  - component: {fileID: 2224737891958222555}
   m_Layer: 0
   m_Name: pf_GemGatherNode
   m_TagString: Untagged
@@ -63,19 +62,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: {fileID: 11400000, guid: 3d68ce8b3a3aa5247b0aab52ca45f477, type: 2}
---- !u!114 &2224737891958222555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3616578739019203568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2daffe00f0829e498d350b2bbf96c52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runOnce: 1
 --- !u!1 &8510681094144174509
 GameObject:
   m_ObjectHideFlags: 0

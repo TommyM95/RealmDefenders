@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EnemyWaveManager : MonoBehaviour
 {
+    public static EnemyWaveManager Instance { get; private set; }
+
     public event EventHandler OnWaveNumberChanged;
 
     private enum State
@@ -29,6 +31,10 @@ public class EnemyWaveManager : MonoBehaviour
 
     private int remaingEnemySpawnAmount;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -45,14 +51,14 @@ public class EnemyWaveManager : MonoBehaviour
         {
             case State.WaitingToSpawnNextWave:
                 nextWaveSpawnTimer -= Time.deltaTime;
-                if (nextWaveSpawnTimer <= 0f)
+                if (nextWaveSpawnTimer <= 0f && BuildingManager.Instance.GetPlayerCampBuilding() != null)
                 {
                     SpawnWave();
                     nextWaveSpawnTimer = nextWaveSpawnTimerMax;
                 }
                 break;
             case State.SpawningWave:
-                if (remaingEnemySpawnAmount > 0)
+                if (remaingEnemySpawnAmount > 0 && BuildingManager.Instance.GetPlayerCampBuilding() != null)
                 {
                     nextEnemySpawnTimer -= Time.deltaTime;
                     if (nextEnemySpawnTimer < 0f)

@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private HealthSystem healthSystem;
     private Transform targetTransform;  // Transform of target
     private Rigidbody2D rigidbody2D;    //rigidbody referance of this enemy
+    public SpriteRenderer spriteRenderer;  //sprite Renderer component 
     private float lookForTargetTimer;
     private float lookForTargetTimerMax = 0.2f;    // How often should enemy look for a target
 
@@ -26,7 +27,10 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        targetTransform = BuildingManager.Instance.GetPlayerCampBuilding().transform;
+        if (BuildingManager.Instance.GetPlayerCampBuilding().transform != null)
+        {
+            targetTransform = BuildingManager.Instance.GetPlayerCampBuilding().transform;
+        }
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.OnDied += HealthSystem_OnDied;
 
@@ -41,6 +45,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (BuildingManager.Instance.GetPlayerCampBuilding() == null)
+        {
+            Destroy(gameObject);
+        }
         Movement();
         Target();
     }
@@ -111,8 +119,12 @@ public class Enemy : MonoBehaviour
 
         if (targetTransform == null)
         {
-            // No targets in range
-            targetTransform = BuildingManager.Instance.GetPlayerCampBuilding().transform;
+            if (BuildingManager.Instance.GetPlayerCampBuilding().transform != null)
+            {
+                // No targets in range
+                targetTransform = BuildingManager.Instance.GetPlayerCampBuilding().transform;
+            }
         }
     }
+
 }
