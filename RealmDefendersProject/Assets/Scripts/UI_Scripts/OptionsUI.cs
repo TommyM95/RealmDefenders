@@ -6,6 +6,7 @@ using TMPro;
 
 public class OptionsUI : MonoBehaviour
 {
+    public static OptionsUI Instance;
 
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private MusicManager musicManager;
@@ -15,6 +16,8 @@ public class OptionsUI : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         soundVolumeText = transform.Find("soundVolumeText").GetComponent<TextMeshProUGUI>();
         musicVolumeText = transform.Find("musicVolumeText").GetComponent<TextMeshProUGUI>();
 
@@ -35,7 +38,7 @@ public class OptionsUI : MonoBehaviour
             UpdateText();
         });
         transform.Find("mainMenuButton").GetComponent<Button>().onClick.AddListener(() => {
-
+            GameSceneManager.Load(GameSceneManager.Scene.MainMenuScene);
         });
     }
 

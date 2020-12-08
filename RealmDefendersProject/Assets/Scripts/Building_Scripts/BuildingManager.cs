@@ -70,13 +70,18 @@ public class BuildingManager : MonoBehaviour
                 }
             }
         }
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OptionsUI.Instance.ToggleVisible();
+        }
         //Debug.Log(GetMouseWorldPosition()); // Used for Testing the GetMouseWorldPosition Function
         /*if (Input.GetKeyDown(KeyCode.T))
         {
             Vector3 enemySpawnPos = UtilitieClass.GetMouseWorldPosition() + UtilitieClass.GetRandomDirection() * 5f;
             Enemy.Create(enemySpawnPos);
         }*/
+
+
     }
 
     public void SetActiveBuildingType(so_BuildingType buildingType) //
