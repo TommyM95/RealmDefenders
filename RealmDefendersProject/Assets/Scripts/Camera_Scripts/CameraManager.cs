@@ -12,6 +12,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera = null;
     [SerializeField] float minOrthgraphicSize = 5f;
     [SerializeField] float maxOrthgraphicSize = 30f;
+    float y;
+    float x;
 
     private float orthgraphicSize;
     private float targetOrthgraphicSize;
@@ -30,8 +32,15 @@ public class CameraManager : MonoBehaviour
 
     private void CameraMove()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        
+       // if (Input.GetKey(KeyCode.W) != false || Input.GetKey(KeyCode.S) != false)
+       // {
+            y = Input.GetAxisRaw("Vertical");
+       // }
+       // if (Input.GetKeyDown(KeyCode.A) != false || Input.GetKeyDown(KeyCode.D) != false)
+        //{
+            x = Input.GetAxisRaw("Horizontal");
+       // }
 
         Vector3 moveDirection = new Vector3(x, y).normalized;
 

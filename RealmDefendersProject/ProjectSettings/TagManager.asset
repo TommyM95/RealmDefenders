@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ResourceNodes
+  - Enemys
   layers:
   - Default
   - TransparentFX
@@ -15,9 +17,9 @@ TagManager:
   - 
   - Background
   - Buildings
-  - 
-  - 
-  - 
+  - ResourceNodes
+  - Enemys
+  - CameraBounds
   - 
   - 
   - 

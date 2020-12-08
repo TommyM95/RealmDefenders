@@ -10,7 +10,9 @@ public class so_BuildingType : ScriptableObject
     public ResourceGeneratorData resourceGeneratorData;     // ResourceGeneratorData Custom class to define how much resources is generated persecond
     public Sprite sprite;                                   // Building UI Sprite
     public float minDistanceBetweenBuildingRadius;          // Used to determine the minimum distance between buildings that can be placed
-    public ResourceAmount[] buildResourceCostArray;          // Arry because we might have more than one resource needed to build a building
+    public ResourceAmount[] buildResourceCostArray;         // Arry because we might have more than one resource needed to build a building
+    public float maxHealth;                                 // Maximum Health of building
+    public bool hasResourceGeneratorData;                   // So We can see if a building has resource a resource generator and avoid error when it does not
 
 
     public string GetCostOfBuildingAsString()

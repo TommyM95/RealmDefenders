@@ -21,3 +21,6 @@ MonoBehaviour:
     maxResouceAmount: 10
   sprite: {fileID: 0}
   minDistanceBetweenBuildingRadius: 1
+  buildResourceCostArray: []
+  maxHealth: 200
+  hasResourceGeneratorData: 1
