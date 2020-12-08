@@ -39,6 +39,7 @@ public class Building : MonoBehaviour
     private void HealthSystem_OnDamageTaken(object sender, EventArgs e)
     {
         ShowRepairButton();
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Explo);
     }
 
     private void HealthSystem_OnDied(object sender, EventArgs e)

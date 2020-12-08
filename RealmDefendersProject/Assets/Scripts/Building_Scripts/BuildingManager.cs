@@ -40,6 +40,7 @@ public class BuildingManager : MonoBehaviour
         GameObject allEnemy = GameObject.Find("pf_Enemy(Clone)");
         //allEnemy.SetActive(false);
         allEnemy.GetComponent<HealthSystem>().Damage(99999);
+        SoundManager.Instance.PlaySound(SoundManager.Sound.Explo);
         GameOverUI.Instance.Show();
         
 
@@ -56,6 +57,7 @@ public class BuildingManager : MonoBehaviour
                     {
                         ResourceManager.Instance.SpendResource(activeBuildingType.buildResourceCostArray);
                         Instantiate(activeBuildingType.prefab, UtilitieClass.GetMouseWorldPosition(), Quaternion.identity);
+                        SoundManager.Instance.PlaySound(SoundManager.Sound.Hit);
                     }
                     else
                     {
@@ -108,7 +110,7 @@ public class BuildingManager : MonoBehaviour
         foreach (Collider2D collider2D in collider2DArray)
         {
             BuildingTypeContainer buildingTypeContainer = collider2D.GetComponent<BuildingTypeContainer>();
-            Debug.Log(buildingTypeContainer.buildingType);
+            //Debug.Log(buildingTypeContainer.buildingType);
             if (buildingTypeContainer.buildingType == buildingType)
             {
                 errorMessage = "Too close to another building of the same type";

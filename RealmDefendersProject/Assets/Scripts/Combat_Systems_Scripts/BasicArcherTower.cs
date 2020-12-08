@@ -71,6 +71,7 @@ public class BasicArcherTower : MonoBehaviour
             if (targetEnemy != null)
             {
                 BasicArrowProjectile.Create(projectileSpawnPoint, targetEnemy);
+                SoundManager.Instance.PlaySound(SoundManager.Sound.Shoot);
             }
             else
             {
