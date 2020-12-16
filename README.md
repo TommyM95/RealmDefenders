@@ -1,2 +1,2 @@
 # RealmDefenders
-Realm Defenders is my current Uni project for class Game Design. A Building Tower Defence Game
+Realm Defenders is a Builder Defender Game project being developed for my uni class Game Design. It is based on a tower defence stratagey game with some slight twists.
