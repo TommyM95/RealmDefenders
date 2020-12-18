@@ -15,7 +15,7 @@ MonoBehaviour:
   nameString: Gem Gatherer
   prefab: {fileID: 3284150827291431656, guid: 6ac321e4281bc20499960df79e71ca52, type: 3}
   resourceGeneratorData:
-    timerMax: 2
+    timerMax: 4
     resourceType: {fileID: 11400000, guid: 3d68ce8b3a3aa5247b0aab52ca45f477, type: 2}
     resourceDetectionRadius: 6
     maxResouceAmount: 4
@@ -23,8 +23,8 @@ MonoBehaviour:
   minDistanceBetweenBuildingRadius: 1
   buildResourceCostArray:
   - resourceType: {fileID: 11400000, guid: 0a13ad89e6721874cb91004a53f1fed8, type: 2}
-    amount: 15
+    amount: 25
   - resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
-    amount: 15
+    amount: 25
   maxHealth: 100
   hasResourceGeneratorData: 1

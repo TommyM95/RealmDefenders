@@ -20,17 +20,6 @@ public class ToolTipUI : MonoBehaviour
     private void Awake()                                                // Setting all the referances
     {
         SetUp();
-
-        /*Instance = this;
-
-        ParentRectTransform = GetComponent<RectTransform>();
-        textMeshPro = transform.Find("text").GetComponent<TextMeshProUGUI>();
-        backgroundRectTransform = transform.Find("background").GetComponent<RectTransform>();
-        textRectTransform = transform.Find("text").GetComponent<RectTransform>();
-        backgroundPadding = new Vector2 (textRectTransform.anchoredPosition.x, textRectTransform.anchoredPosition.y);
-
-        Hide();
-        */
     }
 
     private void Update()
