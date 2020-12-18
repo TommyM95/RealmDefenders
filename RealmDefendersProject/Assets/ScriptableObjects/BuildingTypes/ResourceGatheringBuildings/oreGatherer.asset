@@ -15,14 +15,14 @@ MonoBehaviour:
   nameString: Ore Gatherer
   prefab: {fileID: 3284150827291431656, guid: dd54124816709864c910d0a185d1c61b, type: 3}
   resourceGeneratorData:
-    timerMax: 1
+    timerMax: 2.3
     resourceType: {fileID: 11400000, guid: 0a13ad89e6721874cb91004a53f1fed8, type: 2}
     resourceDetectionRadius: 5
-    maxResouceAmount: 6
+    maxResouceAmount: 4
   sprite: {fileID: 21300000, guid: 136d9f7c0d4e8c748b57de60aa1a5b40, type: 3}
   minDistanceBetweenBuildingRadius: 1
   buildResourceCostArray:
   - resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
-    amount: 20
+    amount: 30
   maxHealth: 100
   hasResourceGeneratorData: 1

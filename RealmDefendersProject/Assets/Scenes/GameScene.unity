@@ -92311,11 +92311,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingResourceAmountList:
   - resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
-    amount: 100
+    amount: 10
   - resourceType: {fileID: 11400000, guid: 0a13ad89e6721874cb91004a53f1fed8, type: 2}
-    amount: 100
+    amount: 0
   - resourceType: {fileID: 11400000, guid: 3d68ce8b3a3aa5247b0aab52ca45f477, type: 2}
-    amount: 100
+    amount: 0
 --- !u!1 &1737379587
 GameObject:
   m_ObjectHideFlags: 0

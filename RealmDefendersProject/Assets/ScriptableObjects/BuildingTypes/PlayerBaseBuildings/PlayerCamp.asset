@@ -15,12 +15,12 @@ MonoBehaviour:
   nameString: Player Camp
   prefab: {fileID: 0}
   resourceGeneratorData:
-    timerMax: 0.5
+    timerMax: 0.8
     resourceType: {fileID: 11400000, guid: 42e0996a86ce23343b2c96c7bb1a6658, type: 2}
     resourceDetectionRadius: 5555555
     maxResouceAmount: 10
   sprite: {fileID: 0}
   minDistanceBetweenBuildingRadius: 1
   buildResourceCostArray: []
-  maxHealth: 200
+  maxHealth: 220
   hasResourceGeneratorData: 1
